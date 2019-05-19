@@ -19,6 +19,10 @@ Shape* Shape::In(ifstream& ifst)
 	sp->InData(ifst);
 	return sp;
 }
+bool Shape::Compare(Shape& other)
+{
+	return Perimeter() < other.Perimeter();
+}
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
 //----------------------------------------------------------------------------------------------
@@ -98,4 +102,11 @@ void Container::ClearContainer()
 		head = head->next;
 		delete forDelete;
 	}
+}
+void Container::Sort()
+{
+	for (Node* i = head; i; i = i->next)
+		for (Node* j = head; j; j = j->next)
+			if (i->data->Compare(*(j->data)))
+				swap(i->data, j->data);
 }
