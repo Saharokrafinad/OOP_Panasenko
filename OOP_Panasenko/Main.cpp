@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
 	c.InContainer(inFileStream);
 	cout << "Контейнер заполнен" << endl;
 	c.OutContainer(outFileStream);
+	c.OutRectangles(outFileStream);
 	c.ClearContainer();
 	cout << "Контейнер очищен" << endl;
 	cout << "Завершение работы" << endl;

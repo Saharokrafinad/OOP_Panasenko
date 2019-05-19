@@ -12,6 +12,7 @@ public:
 	static Shape* In(ifstream& ifst);
 	virtual void InData(ifstream& ifst) = 0;
 	virtual void OutData(ofstream& ofst) = 0;
+	virtual void OutRectangles(ofstream& ofst);
 };
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
@@ -23,6 +24,7 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	void OutRectangles(ofstream& ofst);
 	Rectangle() {};
 };
 //----------------------------------------------------------------------------------------------
@@ -60,6 +62,7 @@ public:
 	void InContainer(ifstream& ifst);
 	void OutContainer(ofstream& ofst);
 	void ClearContainer();
+	void OutRectangles(ofstream& ofst);
 	~Container() { ClearContainer(); }
 };
 #endif

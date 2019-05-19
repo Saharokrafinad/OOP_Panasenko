@@ -19,6 +19,10 @@ Shape* Shape::In(ifstream& ifst)
 	sp->InData(ifst);
 	return sp;
 }
+void Shape::OutRectangles(ofstream& ofst)
+{
+	ofst << "";
+}
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
 //----------------------------------------------------------------------------------------------
@@ -29,6 +33,10 @@ void Rectangle::InData(ifstream& ifst)
 void Rectangle::OutData(ofstream& ofst)
 {
 	ofst << "Прямоугольник: x = " << x << ", y = " << y << endl;
+}
+void Rectangle::OutRectangles(ofstream& ofst)
+{
+	OutData(ofst);
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -88,5 +96,17 @@ void Container::ClearContainer()
 		Node* forDelete = head;
 		head = head->next;
 		delete forDelete;
+	}
+}
+void Container::OutRectangles(ofstream& ofst)
+{
+	ofst << "\nТолько прямоугольники:" << endl;
+	Node* current = head;
+	if (current == NULL)
+		return;
+	while (current != NULL)
+	{
+		current->data->OutRectangles(ofst);
+		current = current->next;
 	}
 }
