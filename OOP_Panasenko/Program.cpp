@@ -19,16 +19,26 @@ Shape* Shape::In(ifstream& ifst)
 	sp->InData(ifst);
 	return sp;
 }
+void Shape::InData(ifstream& ifst)
+{
+	ifst >> density;
+}
+void Shape::OutData(ofstream& ofst)
+{
+	ofst << " Плотность = " << density << endl;
+}
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
 //----------------------------------------------------------------------------------------------
 void Rectangle::InData(ifstream& ifst)
 {
 	ifst >> x >> y;
+	Shape::InData(ifst);
 }
 void Rectangle::OutData(ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << x << ", y = " << y << endl;
+	ofst << "Прямоугольник: x = " << x << ", y = " << y;
+	Shape::OutData(ofst);
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -36,10 +46,12 @@ void Rectangle::OutData(ofstream& ofst)
 void Circle::InData(ifstream& ifst)
 {
 	ifst >> r;
+	Shape::InData(ifst);
 }
 void Circle::OutData(ofstream& ofst)
 {
-	ofst << "Круг: r = " << r << endl;
+	ofst << "Круг: r = " << r;
+	Shape::OutData(ofst);
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список

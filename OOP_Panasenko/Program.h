@@ -7,11 +7,14 @@ using namespace std;
 //----------------------------------------------------------------------------------------------
 class Shape
 {
-public:
+private:
+	int density;
+protected:
 	Shape() {};
+public:
 	static Shape* In(ifstream& ifst);
-	virtual void InData(ifstream& ifst) = 0;
-	virtual void OutData(ofstream& ofst) = 0;
+	virtual void InData(ifstream& ifst);
+	virtual void OutData(ofstream& ofst);
 };
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
