@@ -34,6 +34,10 @@ bool Shape::Compare(Shape& other)
 {
 	return Perimeter() < other.Perimeter();
 }
+void Shape::OutRectangles(ofstream& ofst)
+{
+	ofst << "";
+}
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
 //----------------------------------------------------------------------------------------------
@@ -49,6 +53,10 @@ void Rectangle::OutData(ofstream& ofst)
 int Rectangle::Perimeter() 
 { 
 	return 2 * (x + y); 
+}
+void Rectangle::OutRectangles(ofstream& ofst)
+{
+	OutData(ofst);
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -126,6 +134,19 @@ void Container::ClearContainer()
 		head = head->next;
 		delete forDelete;
 	}
+}
+void Container::OutRectangles(ofstream& ofst)
+{
+	ofst << "\nТолько прямоугольники:" << endl;
+	Node* current = head;
+	if (current == NULL)
+		return;
+	while (current != NULL)
+	{
+		current->data->OutRectangles(ofst);
+		current = current->next;
+	}
+}
 }
 void Container::Sort()
 {

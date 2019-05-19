@@ -14,6 +14,7 @@ public:
 	virtual void OutData(ofstream& ofst) = 0;
 	virtual int Perimeter() = 0;
 	bool Compare(Shape& other);
+	virtual void OutRectangles(ofstream& ofst);
 };
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
@@ -25,6 +26,7 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	void OutRectangles(ofstream& ofst);
 	int Perimeter();
 	Rectangle() {};
 };
@@ -76,6 +78,7 @@ public:
 	void InContainer(ifstream& ifst);
 	void OutContainer(ofstream& ofst);
 	void ClearContainer();
+	void OutRectangles(ofstream& ofst);
 	void Sort();
 	~Container() { ClearContainer(); }
 };
