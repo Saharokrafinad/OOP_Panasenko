@@ -22,6 +22,10 @@ Shape* Shape::In(ifstream& ifst)
 	sp->InData(ifst);
 	return sp;
 }
+bool Shape::Compare(Shape& other)
+{
+	return Perimeter() < other.Perimeter();
+}
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
 //----------------------------------------------------------------------------------------------
@@ -31,7 +35,11 @@ void Rectangle::InData(ifstream& ifst)
 }
 void Rectangle::OutData(ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << x << ", y = " << y << endl;
+	ofst << "Прямоугольник: x = " << x << ", y = " << y;
+}
+int Rectangle::Perimeter() 
+{ 
+	return 2 * (x + y); 
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -42,7 +50,11 @@ void Circle::InData(ifstream& ifst)
 }
 void Circle::OutData(ofstream& ofst)
 {
-	ofst << "Круг: r = " << r << endl;
+	ofst << "Круг: r = " << r;
+}
+int Circle::Perimeter()
+{
+	return int(2 * 3.14 * r);
 }
 //----------------------------------------------------------------------------------------------
 // Треугольник
@@ -92,6 +104,7 @@ void Container::OutContainer(ofstream& ofst)
 	while (current != NULL)
 	{
 		current->data->OutData(ofst);
+		ofst << " Периметр = " << current->data->Perimeter() << endl;
 		current = current->next;
 	}
 }
@@ -103,4 +116,11 @@ void Container::ClearContainer()
 		head = head->next;
 		delete forDelete;
 	}
+}
+void Container::Sort()
+{
+	for (Node* i = head; i; i = i->next)
+		for (Node* j = head; j; j = j->next)
+			if (i->data->Compare(*(j->data)))
+				swap(i->data, j->data);
 }

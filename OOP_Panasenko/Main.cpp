@@ -19,6 +19,8 @@ int main(int argc, char* argv[])
 	cout << "Старт" << endl;
 	c.InContainer(inFileStream);
 	cout << "Контейнер заполнен" << endl;
+	cout << "Контейнер отсортирован" << endl;
+	c.Sort();
 	c.OutContainer(outFileStream);
 	c.ClearContainer();
 	cout << "Контейнер очищен" << endl;
