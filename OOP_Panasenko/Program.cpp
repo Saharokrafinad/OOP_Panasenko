@@ -30,6 +30,10 @@ void Rectangle::OutData(ofstream& ofst)
 {
 	ofst << "Прямоугольник: x = " << x << ", y = " << y << endl;
 }
+int Rectangle::Perimeter() 
+{ 
+	return 2 * (x + y); 
+}
 //----------------------------------------------------------------------------------------------
 // Круг
 //----------------------------------------------------------------------------------------------
@@ -40,6 +44,10 @@ void Circle::InData(ifstream& ifst)
 void Circle::OutData(ofstream& ofst)
 {
 	ofst << "Круг: r = " << r << endl;
+}
+int Circle::Perimeter()
+{
+	return int(2 * 3.14 * r);
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
@@ -79,6 +87,7 @@ void Container::OutContainer(ofstream& ofst)
 	{
 		current->data->OutData(ofst);
 		current = current->next;
+		ofst << " Периметр = " << current->data->Perimeter() << endl;
 	}
 }
 void Container::ClearContainer()
