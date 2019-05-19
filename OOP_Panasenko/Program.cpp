@@ -28,7 +28,7 @@ void Rectangle::InData(ifstream& ifst)
 }
 void Rectangle::OutData(ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << x << ", y = " << y;
+	ofst << "Прямоугольник: x = " << x << ", y = " << y << endl;
 }
 int Rectangle::Perimeter() 
 { 
@@ -43,7 +43,7 @@ void Circle::InData(ifstream& ifst)
 }
 void Circle::OutData(ofstream& ofst)
 {
-	ofst << "Круг: r = " << r;
+	ofst << "Круг: r = " << r << endl;
 }
 int Circle::Perimeter()
 {
