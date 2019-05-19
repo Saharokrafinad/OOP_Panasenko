@@ -85,7 +85,7 @@ void Container::InContainer(ifstream& ifst)
 }
 void Container::OutContainer(ofstream& ofst)
 {
-	ofst << "Контейнер содержит:/n" << endl;
+	ofst << "Контейнер содержит:\n" << endl;
 	Node* current = head;
 	if (current == NULL)
 		return;
