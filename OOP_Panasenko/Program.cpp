@@ -86,8 +86,8 @@ void Container::OutContainer(ofstream& ofst)
 	while (current != NULL)
 	{
 		current->data->OutData(ofst);
-		current = current->next;
 		ofst << " Периметр = " << current->data->Perimeter() << endl;
+		current = current->next;
 	}
 }
 void Container::ClearContainer()
