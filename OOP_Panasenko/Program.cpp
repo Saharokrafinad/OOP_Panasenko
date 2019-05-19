@@ -15,6 +15,9 @@ Shape* Shape::In(ifstream& ifst)
 	case 2:
 		sp = new Circle;
 		break;
+	case 3:
+		sp = new Triangle;
+		break;
 	}
 	sp->InData(ifst);
 	return sp;
@@ -40,6 +43,17 @@ void Circle::InData(ifstream& ifst)
 void Circle::OutData(ofstream& ofst)
 {
 	ofst << "Круг: r = " << r << endl;
+}
+//----------------------------------------------------------------------------------------------
+// Треугольник
+//----------------------------------------------------------------------------------------------
+void Triangle::InData(ifstream& ifst)
+{
+	ifst >> x1 >> x2 >> x3;
+}
+void Triangle::OutData(ofstream& ofst)
+{
+	ofst << "Треугольник: x1 = " << x1 << ", x2 = " << x2 << ", x3 = " << x3 << endl;
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
