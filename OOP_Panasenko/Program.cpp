@@ -22,6 +22,14 @@ Shape* Shape::In(ifstream& ifst)
 	sp->InData(ifst);
 	return sp;
 }
+void Shape::InData(ifstream& ifst)
+{
+	ifst >> density;
+}
+void Shape::OutData(ofstream& ofst)
+{
+	ofst << " Плотность = " << density << endl;
+}
 bool Shape::Compare(Shape& other)
 {
 	return Perimeter() < other.Perimeter();
@@ -32,6 +40,7 @@ bool Shape::Compare(Shape& other)
 void Rectangle::InData(ifstream& ifst)
 {
 	ifst >> x >> y;
+	Shape::InData(ifst);
 }
 void Rectangle::OutData(ofstream& ofst)
 {
@@ -47,6 +56,7 @@ int Rectangle::Perimeter()
 void Circle::InData(ifstream& ifst)
 {
 	ifst >> r;
+	Shape::InData(ifst);
 }
 void Circle::OutData(ofstream& ofst)
 {
