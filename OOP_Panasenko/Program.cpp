@@ -28,7 +28,7 @@ void Shape::InData(ifstream& ifst)
 }
 void Shape::OutData(ofstream& ofst)
 {
-	ofst << " Плотность = " << density << endl;
+	ofst << " Плотность = " << density;
 }
 bool Shape::Compare(Shape& other)
 {
@@ -49,6 +49,7 @@ void Rectangle::InData(ifstream& ifst)
 void Rectangle::OutData(ofstream& ofst)
 {
 	ofst << "Прямоугольник: x = " << x << ", y = " << y;
+	Shape::OutData(ofst);
 }
 int Rectangle::Perimeter() 
 { 
@@ -69,6 +70,7 @@ void Circle::InData(ifstream& ifst)
 void Circle::OutData(ofstream& ofst)
 {
 	ofst << "Круг: r = " << r;
+	Shape::OutData(ofst);
 }
 int Circle::Perimeter()
 {
@@ -80,10 +82,16 @@ int Circle::Perimeter()
 void Triangle::InData(ifstream& ifst)
 {
 	ifst >> x1 >> x2 >> x3;
+	Shape::InData(ifst);
 }
 void Triangle::OutData(ofstream& ofst)
 {
-	ofst << "Треугольник: x1 = " << x1 << ", x2 = " << x2 << ", x3 = " << x3 << endl;
+	ofst << "Треугольник: x1 = " << x1 << ", x2 = " << x2 << ", x3 = " << x3;
+	Shape::OutData(ofst);
+}
+int Triangle::Perimeter()
+{
+	return int(x1 + x2 + x3);
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
@@ -145,9 +153,11 @@ void Container::OutRectangles(ofstream& ofst)
 	{
 		current->data->OutRectangles(ofst);
 		current = current->next;
+		ofst << endl;
+
 	}
 }
-}
+
 void Container::Sort()
 {
 	for (Node* i = head; i; i = i->next)

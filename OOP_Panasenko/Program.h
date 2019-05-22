@@ -7,8 +7,11 @@ using namespace std;
 //----------------------------------------------------------------------------------------------
 class Shape
 {
-public:
+private:
+	int density;
+protected:
 	Shape() {};
+public:
 	static Shape* In(ifstream& ifst);
 	virtual void InData(ifstream& ifst) = 0;
 	virtual void OutData(ofstream& ofst) = 0;
@@ -53,8 +56,10 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	int Perimeter();
 	Triangle() {};
 };
+
 //----------------------------------------------------------------------------------------------
 // Элемент контейнера - односвязного списка
 //----------------------------------------------------------------------------------------------
