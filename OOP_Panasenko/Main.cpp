@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include "Program.h"
+#include <vector>
+#include <string>
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -19,6 +21,7 @@ int main(int argc, char* argv[])
 	cout << "Старт" << endl;
 	c.InContainer(inFileStream);
 	cout << "Контейнер заполнен" << endl;
+	c.OutContainer(outFileStream);
 	cout << "Контейнер отсортирован" << endl;
 	c.Sort();
 	c.OutContainer(outFileStream);

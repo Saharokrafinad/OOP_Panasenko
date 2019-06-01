@@ -22,6 +22,7 @@ Shape* Shape::In(ifstream& ifst)
 	sp->InData(ifst);
 	return sp;
 }
+
 void Shape::InData(ifstream& ifst)
 {
 	ifst >> density;
@@ -59,6 +60,12 @@ void Rectangle::OutRectangles(ofstream& ofst)
 {
 	OutData(ofst);
 }
+Rectangle::Rectangle(int x, int y, int density)
+{
+	this->x = x;
+	this->y = y;
+	Shape::density = density;
+}
 //----------------------------------------------------------------------------------------------
 // Круг
 //----------------------------------------------------------------------------------------------
@@ -75,6 +82,11 @@ void Circle::OutData(ofstream& ofst)
 int Circle::Perimeter()
 {
 	return int(2 * 3.14 * r);
+}
+Circle::Circle(int r, int density)
+{
+	this->r = r;
+	Shape::density = density;
 }
 //----------------------------------------------------------------------------------------------
 // Треугольник
@@ -93,6 +105,21 @@ int Triangle::Perimeter()
 {
 	return int(x1 + x2 + x3);
 }
+Triangle::Triangle(int x1, int x2, int x3, int density)
+{
+	this->x1 = x1;
+	this->x2 = x2;
+	this->x3 = x3;
+	Shape::density = density;
+}
+//----------------------------------------------------------------------------------------------
+// Элемент контейнера
+//----------------------------------------------------------------------------------------------
+Node::Node(Shape* data, Node* next)
+{
+	this->data = data;
+	this->next = next;
+}
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
 //----------------------------------------------------------------------------------------------
@@ -105,15 +132,9 @@ void Container::InContainer(ifstream& ifst)
 {
 	while (!ifst.eof())
 	{
-		Node* temp = new Node;
-		Shape* data = Shape::In(ifst);
-		temp->data = data;
-		temp->next = NULL;
-		if (head == NULL)
-		{
-			head = temp;
-			last = temp;
-		}
+		Node* temp = new Node(Shape::In(ifst), NULL);
+		if (!head)
+			head = last = temp;
 		else
 		{
 			last->next = temp;
@@ -164,4 +185,15 @@ void Container::Sort()
 		for (Node* j = head; j; j = j->next)
 			if (i->data->Compare(*(j->data)))
 				swap(i->data, j->data);
+}
+void Container::Add(Shape* shape)
+{
+	Node* temp = new Node(shape, NULL);
+	if (!head)
+		head = last = temp;
+	else
+	{
+		last->next = temp;
+		last = temp;
+	}
 }

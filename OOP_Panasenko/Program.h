@@ -7,11 +7,8 @@ using namespace std;
 //----------------------------------------------------------------------------------------------
 class Shape
 {
-private:
-	int density;
-protected:
-	Shape() {};
 public:
+	int density;
 	static Shape* In(ifstream& ifst);
 	virtual void InData(ifstream& ifst) = 0;
 	virtual void OutData(ofstream& ofst) = 0;
@@ -32,6 +29,8 @@ public:
 	void OutRectangles(ofstream& ofst);
 	int Perimeter();
 	Rectangle() {};
+	Rectangle(int x, int y, int density);
+	~Rectangle() {};
 };
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -45,6 +44,8 @@ public:
 	void OutData(ofstream& ofst);
 	int Perimeter();
 	Circle() {};
+	Circle(int r, int density);
+	~Circle() {};
 };
 //----------------------------------------------------------------------------------------------
 // Треугольник
@@ -58,6 +59,8 @@ public:
 	void OutData(ofstream& ofst);
 	int Perimeter();
 	Triangle() {};
+	Triangle(int x1, int x2, int x3, int density);
+	~Triangle() {};
 };
 
 //----------------------------------------------------------------------------------------------
@@ -68,16 +71,16 @@ class Node
 public:
 	Shape* data;
 	Node* next;
+	Node(Shape* data, Node* next);
 };
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
 //----------------------------------------------------------------------------------------------
 class Container
 {
-private:
-	Node* head;
-	Node* last;
 public:
+	Node * head;
+	Node* last;
 	Container() { head = NULL; last = NULL; }
 	void InitContainer();
 	void InContainer(ifstream& ifst);
@@ -85,6 +88,7 @@ public:
 	void ClearContainer();
 	void OutRectangles(ofstream& ofst);
 	void Sort();
+	void Add(Shape* shape);
 	~Container() { ClearContainer(); }
 };
 #endif
