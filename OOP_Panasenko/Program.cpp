@@ -1,4 +1,5 @@
 #include "Program.h"
+#include <string>
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
 //----------------------------------------------------------------------------------------------
@@ -65,6 +66,11 @@ Rectangle::Rectangle(int x, int y, int density)
 	this->x = x;
 	this->y = y;
 	Shape::density = density;
+
+}
+string Rectangle::ToString()
+{
+	return to_string(x) + " " + to_string(y) + " " + to_string(density);
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -87,6 +93,10 @@ Circle::Circle(int r, int density)
 {
 	this->r = r;
 	Shape::density = density;
+}
+string Circle::ToString()
+{
+	return to_string(r) + " " + to_string(density);
 }
 //----------------------------------------------------------------------------------------------
 // Треугольник
@@ -111,6 +121,10 @@ Triangle::Triangle(int x1, int x2, int x3, int density)
 	this->x2 = x2;
 	this->x3 = x3;
 	Shape::density = density;
+}
+string Triangle::ToString()
+{
+	return to_string(x1) + " " + to_string(x2) + " " + to_string(x3) + " " + to_string(density);
 }
 //----------------------------------------------------------------------------------------------
 // Элемент контейнера

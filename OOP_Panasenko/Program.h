@@ -15,6 +15,7 @@ public:
 	virtual int Perimeter() = 0;
 	bool Compare(Shape& other);
 	virtual void OutRectangles(ofstream& ofst);
+	virtual string ToString() = 0;
 };
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
@@ -31,6 +32,7 @@ public:
 	Rectangle() {};
 	Rectangle(int x, int y, int density);
 	~Rectangle() {};
+	string ToString();
 };
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -46,6 +48,7 @@ public:
 	Circle() {};
 	Circle(int r, int density);
 	~Circle() {};
+	string ToString();
 };
 //----------------------------------------------------------------------------------------------
 // Треугольник
@@ -61,6 +64,7 @@ public:
 	Triangle() {};
 	Triangle(int x1, int x2, int x3, int density);
 	~Triangle() {};
+	string ToString();
 };
 
 //----------------------------------------------------------------------------------------------

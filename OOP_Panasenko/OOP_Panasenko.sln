@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OOP_Panasenko", "OOP_Panasenko.vcxproj", "{3BACBBC4-C341-49AD-9A20-93651978E046}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OOPTests", "..\OOPTests\OOPTests.vcxproj", "{756A738D-DC36-457E-AD1E-360EC7C4C00C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{3BACBBC4-C341-49AD-9A20-93651978E046}.Release|x64.Build.0 = Release|x64
 		{3BACBBC4-C341-49AD-9A20-93651978E046}.Release|x86.ActiveCfg = Release|Win32
 		{3BACBBC4-C341-49AD-9A20-93651978E046}.Release|x86.Build.0 = Release|Win32
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Debug|x64.ActiveCfg = Debug|x64
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Debug|x64.Build.0 = Debug|x64
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Debug|x86.ActiveCfg = Debug|Win32
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Debug|x86.Build.0 = Debug|Win32
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Release|x64.ActiveCfg = Release|x64
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Release|x64.Build.0 = Release|x64
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Release|x86.ActiveCfg = Release|Win32
+		{756A738D-DC36-457E-AD1E-360EC7C4C00C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
