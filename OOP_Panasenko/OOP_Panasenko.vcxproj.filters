@@ -31,7 +31,7 @@
     <Text Include="D:\Рабочее пространство\Учеба\Прога\OOP\OOP\Input.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
-    <Text Include="D:\Рабочее пространство\Учеба\Прога\OOP\OOP\Output.txt">
+    <Text Include="Output.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>

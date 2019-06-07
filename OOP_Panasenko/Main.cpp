@@ -13,6 +13,10 @@ int main(int argc, char* argv[])
 	}
 
 	ifstream inFileStream(argv[1]);
+	if (!inFileStream.is_open())
+	{
+		ExceptionHelper::PrintMsg("Невозможно открыть входной файл, в директории нет файла с именем: " + (string)argv[1]);
+	}
 	ofstream outFileStream(argv[2]);
 	Container c;
 

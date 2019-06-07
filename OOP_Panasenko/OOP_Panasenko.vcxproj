@@ -159,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="D:\Рабочее пространство\Учеба\Прога\OOP\OOP\Input.txt" />
-    <Text Include="D:\Рабочее пространство\Учеба\Прога\OOP\OOP\Output.txt" />
+    <Text Include="Output.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

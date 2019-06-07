@@ -1,4 +1,15 @@
 #include "Program.h"
+#include <string>
+#include <iostream>
+//----------------------------------------------------------------------------------------------
+// Вывод сообщений об ошибках
+//----------------------------------------------------------------------------------------------
+void ExceptionHelper::PrintMsg(string message)
+{
+	cout << message << endl;
+	system("pause");
+	exit(EXIT_FAILURE);
+}
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
 //----------------------------------------------------------------------------------------------
@@ -7,24 +18,43 @@ Shape* Shape::In(ifstream& ifst)
 	Shape* sp = NULL;
 	int k;
 	ifst >> k;
-	switch (k)
+
+	try
 	{
-	case 1:
-		sp = new Rectangle;
-		break;
-	case 2:
-		sp = new Circle;
-		break;
-	case 3:
-		sp = new Triangle;
-		break;
+		switch (k)
+		{
+		case 1:
+			sp = new Rectangle;
+			break;
+		case 2:
+			sp = new Circle;
+			break;
+		case 3:
+			sp = new Triangle;
+			break;
+		default:
+			throw exception("Во входном файле присутствует неопознанная фигура! Работа программы прекращена.");
+		}
+		sp->InData(ifst);
+		return sp;
 	}
-	sp->InData(ifst);
-	return sp;
+	catch (exception& except)
+	{
+		ExceptionHelper::PrintMsg(except.what());
+	}
 }
 void Shape::InData(ifstream& ifst)
 {
-	ifst >> density;
+	try
+	{
+		ifst >> density;
+		if (density < 0)
+			throw exception("Плотность не может быть меньше 0! Работа программы прекращена.");
+	}
+	catch (exception& except)
+	{
+		ExceptionHelper::PrintMsg(except.what());;
+	}
 }
 void Shape::OutData(ofstream& ofst)
 {
@@ -43,8 +73,18 @@ void Shape::OutRectangles(ofstream& ofst)
 //----------------------------------------------------------------------------------------------
 void Rectangle::InData(ifstream& ifst)
 {
-	ifst >> x >> y;
-	Shape::InData(ifst);
+	try
+	{
+		ifst >> x >> y;
+		if (x <= 0 || y <= 0)
+			throw exception("Стороны прямоугольника должны быть положительными! Работа программы прекращена.");
+
+		Shape::InData(ifst);
+	}
+	catch (exception& except)
+	{
+		ExceptionHelper::PrintMsg(except.what());
+	}
 }
 void Rectangle::OutData(ofstream& ofst)
 {
@@ -64,9 +104,20 @@ void Rectangle::OutRectangles(ofstream& ofst)
 //----------------------------------------------------------------------------------------------
 void Circle::InData(ifstream& ifst)
 {
-	ifst >> r;
-	Shape::InData(ifst);
+	try
+	{
+		ifst >> r;
+		if (r <= 0)
+			throw exception("Радиус круга должен быть положительным! Работа программы прекращена.");
+
+		Shape::InData(ifst);
+	}
+	catch (exception& except)
+	{
+		ExceptionHelper::PrintMsg(except.what());
+	}
 }
+
 void Circle::OutData(ofstream& ofst)
 {
 	ofst << "Круг: r = " << r;
@@ -81,8 +132,18 @@ int Circle::Perimeter()
 //----------------------------------------------------------------------------------------------
 void Triangle::InData(ifstream& ifst)
 {
-	ifst >> x1 >> x2 >> x3;
-	Shape::InData(ifst);
+	try
+	{
+		ifst >> x1 >> x2 >> x3;
+		if (x1 <= 0 || x2 <= 0 || x3 <= 0)
+			throw exception("Стороны треугольника должны быть положительными! Работа программы прекращена.");
+
+		Shape::InData(ifst);
+	}
+	catch (exception& except)
+	{
+		ExceptionHelper::PrintMsg(except.what());
+	}
 }
 void Triangle::OutData(ofstream& ofst)
 {
