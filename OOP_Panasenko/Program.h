@@ -25,7 +25,7 @@ public:
 class Rectangle : public Shape
 {
 private:
-	int x, y;
+	int side1, side2;
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
@@ -39,7 +39,7 @@ public:
 class Circle : public Shape
 {
 private:
-	int r;
+	int radius;
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
@@ -52,7 +52,7 @@ public:
 class Triangle : public Shape
 {
 private:
-	int x1, x2, x3;
+	int side1, side2, side3;
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);

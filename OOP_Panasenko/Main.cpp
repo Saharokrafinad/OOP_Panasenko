@@ -14,16 +14,16 @@ int main(int argc, char* argv[])
 
 	ifstream inFileStream(argv[1]);
 	ofstream outFileStream(argv[2]);
-	Container c;
+	Container container;
 
 	cout << "Старт" << endl;
-	c.InContainer(inFileStream);
+	container.InContainer(inFileStream);
 	cout << "Контейнер заполнен" << endl;
 	cout << "Контейнер отсортирован" << endl;
-	c.Sort();
-	c.OutContainer(outFileStream);
-	c.OutRectangles(outFileStream);
-	c.ClearContainer();
+	container.Sort();
+	container.OutContainer(outFileStream);
+	container.OutRectangles(outFileStream);
+	container.ClearContainer();
 	cout << "Контейнер очищен" << endl;
 	cout << "Завершение работы" << endl;
 

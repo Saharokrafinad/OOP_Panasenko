@@ -4,23 +4,23 @@
 //----------------------------------------------------------------------------------------------
 Shape* Shape::In(ifstream& ifst)
 {
-	Shape* sp = NULL;
-	int k;
-	ifst >> k;
-	switch (k)
+	Shape* type = NULL;
+	int index;
+	ifst >> index;
+	switch (index)
 	{
 	case 1:
-		sp = new Rectangle;
+		type = new Rectangle;
 		break;
 	case 2:
-		sp = new Circle;
+		type = new Circle;
 		break;
 	case 3:
-		sp = new Triangle;
+		type = new Triangle;
 		break;
 	}
-	sp->InData(ifst);
-	return sp;
+	type->InData(ifst);
+	return type;
 }
 void Shape::InData(ifstream& ifst)
 {
@@ -43,17 +43,17 @@ void Shape::OutRectangles(ofstream& ofst)
 //----------------------------------------------------------------------------------------------
 void Rectangle::InData(ifstream& ifst)
 {
-	ifst >> x >> y;
+	ifst >> side1 >> side2;
 	Shape::InData(ifst);
 }
 void Rectangle::OutData(ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << x << ", y = " << y;
+	ofst << "Прямоугольник: x = " << side1 << ", y = " << side2;
 	Shape::OutData(ofst);
 }
 int Rectangle::Perimeter() 
 { 
-	return 2 * (x + y); 
+	return 2 * (side1 + side2); 
 }
 void Rectangle::OutRectangles(ofstream& ofst)
 {
@@ -64,34 +64,34 @@ void Rectangle::OutRectangles(ofstream& ofst)
 //----------------------------------------------------------------------------------------------
 void Circle::InData(ifstream& ifst)
 {
-	ifst >> r;
+	ifst >> radius;
 	Shape::InData(ifst);
 }
 void Circle::OutData(ofstream& ofst)
 {
-	ofst << "Круг: r = " << r;
+	ofst << "Круг: r = " << radius;
 	Shape::OutData(ofst);
 }
 int Circle::Perimeter()
 {
-	return int(2 * 3.14 * r);
+	return int(2 * 3.14 * radius);
 }
 //----------------------------------------------------------------------------------------------
 // Треугольник
 //----------------------------------------------------------------------------------------------
 void Triangle::InData(ifstream& ifst)
 {
-	ifst >> x1 >> x2 >> x3;
+	ifst >> side1 >> side2 >> side3;
 	Shape::InData(ifst);
 }
 void Triangle::OutData(ofstream& ofst)
 {
-	ofst << "Треугольник: x1 = " << x1 << ", x2 = " << x2 << ", x3 = " << x3;
+	ofst << "Треугольник: x1 = " << side1 << ", x2 = " << side2 << ", x3 = " << side3;
 	Shape::OutData(ofst);
 }
 int Triangle::Perimeter()
 {
-	return int(x1 + x2 + x3);
+	return int(side1 + side2 + side3);
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
@@ -157,7 +157,6 @@ void Container::OutRectangles(ofstream& ofst)
 
 	}
 }
-
 void Container::Sort()
 {
 	for (Node* i = head; i; i = i->next)
