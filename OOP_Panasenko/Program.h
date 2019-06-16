@@ -18,6 +18,10 @@ public:
 	virtual int Perimeter() = 0;
 	bool Compare(Shape& other);
 	virtual void OutRectangles(ofstream& ofst);
+	virtual void MultiMethod(Shape* other, ofstream& ofst) = 0;
+	virtual void MMRectangle(ofstream& ofst) = 0;
+	virtual void MMCircle(ofstream& ofst) = 0;
+	virtual void MMTriangle(ofstream& ofst) = 0;
 };
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
@@ -30,6 +34,10 @@ public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
 	void OutRectangles(ofstream& ofst);
+	void MultiMethod(Shape* other, ofstream& ofst);
+	void MMRectangle(ofstream& ofst);
+	void MMCircle(ofstream& ofst);
+	void MMTriangle(ofstream& ofst);
 	int Perimeter();
 	Rectangle() {};
 };
@@ -43,6 +51,10 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	void MultiMethod(Shape* other, ofstream& ofst);
+	void MMRectangle(ofstream& ofst);
+	void MMCircle(ofstream& ofst);
+	void MMTriangle(ofstream& ofst);
 	int Perimeter();
 	Circle() {};
 };
@@ -56,6 +68,10 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	void MultiMethod(Shape* other, ofstream& ofst);
+	void MMRectangle(ofstream& ofst);
+	void MMCircle(ofstream& ofst);
+	void MMTriangle(ofstream& ofst);
 	int Perimeter();
 	Triangle() {};
 };
@@ -84,6 +100,7 @@ public:
 	void OutContainer(ofstream& ofst);
 	void ClearContainer();
 	void OutRectangles(ofstream& ofst);
+	void MultiMethod(ofstream& ofst);
 	void Sort();
 	~Container() { ClearContainer(); }
 };

@@ -23,6 +23,7 @@ int main(int argc, char* argv[])
 	c.Sort();
 	c.OutContainer(outFileStream);
 	c.OutRectangles(outFileStream);
+	c.MultiMethod(outFileStream);
 	c.ClearContainer();
 	cout << "Контейнер очищен" << endl;
 	cout << "Завершение работы" << endl;

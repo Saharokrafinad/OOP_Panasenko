@@ -59,6 +59,25 @@ void Rectangle::OutRectangles(ofstream& ofst)
 {
 	OutData(ofst);
 }
+void Rectangle::MultiMethod(Shape* other, ofstream& ofst)
+{
+	other->MMRectangle(ofst);
+}
+
+void Rectangle::MMRectangle(ofstream& ofst)
+{
+	ofst << "Прямоугольник и прямоугольник" << endl;
+}
+
+void Rectangle::MMCircle(ofstream& ofst)
+{
+	ofst << "Круг и прямоугольник" << endl;
+}
+
+void Rectangle::MMTriangle(ofstream& ofst)
+{
+	ofst << "Треугольник и прямоугольник" << endl;
+}
 //----------------------------------------------------------------------------------------------
 // Круг
 //----------------------------------------------------------------------------------------------
@@ -76,6 +95,25 @@ int Circle::Perimeter()
 {
 	return int(2 * 3.14 * r);
 }
+void Circle::MultiMethod(Shape* other, ofstream& ofst)
+{
+	other->MMCircle(ofst);
+}
+
+void Circle::MMRectangle(ofstream& ofst)
+{
+	ofst << "Прямоуголик и круг" << endl;
+}
+
+void Circle::MMCircle(ofstream& ofst)
+{
+	ofst << "Круг и круг" << endl;
+}
+
+void Circle::MMTriangle(ofstream& ofst)
+{
+	ofst << "Треугольник и круг" << endl;
+}
 //----------------------------------------------------------------------------------------------
 // Треугольник
 //----------------------------------------------------------------------------------------------
@@ -92,6 +130,25 @@ void Triangle::OutData(ofstream& ofst)
 int Triangle::Perimeter()
 {
 	return int(x1 + x2 + x3);
+}
+void Triangle::MultiMethod(Shape* other, ofstream& ofst)
+{
+	other->MMTriangle(ofst);
+}
+
+void Triangle::MMRectangle(ofstream& ofst)
+{
+	ofst << "Прямоугольник и треугольник" << endl;
+}
+
+void Triangle::MMCircle(ofstream& ofst)
+{
+	ofst << "Круг и треугольник" << endl;
+}
+
+void Triangle::MMTriangle(ofstream& ofst)
+{
+	ofst << "Триугольник и треугольник" << endl;
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
@@ -164,4 +221,19 @@ void Container::Sort()
 		for (Node* j = head; j; j = j->next)
 			if (i->data->Compare(*(j->data)))
 				swap(i->data, j->data);
+}
+void Container::MultiMethod(ofstream& ofst)
+{
+	ofst << "Мультиметод:" << endl;
+	Node* i = head;
+	while (i->next)
+	{
+		Node* j = i->next;
+		while (j)
+		{
+			i->data->MultiMethod(j->data, ofst);
+			j = j->next;
+		}
+		i = i->next;
+	}
 }
