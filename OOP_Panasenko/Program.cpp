@@ -30,6 +30,18 @@ void Rectangle::OutData(ofstream& ofst)
 {
 	ofst << "Прямоугольник: x = " << x << ", y = " << y << endl;
 }
+void Rectangle::MultiMethod(Shape* other, ofstream& ofst)
+{
+	other->MMRectangle(ofst);
+}
+void Rectangle::MMRectangle(ofstream& ofst)
+{
+	ofst << "Прямоугольник и прямоугольник" << endl;
+}
+void Rectangle::MMCircle(ofstream& ofst)
+{
+	ofst << "Круг и прямоугольник" << endl;
+}
 //----------------------------------------------------------------------------------------------
 // Круг
 //----------------------------------------------------------------------------------------------
@@ -40,6 +52,18 @@ void Circle::InData(ifstream& ifst)
 void Circle::OutData(ofstream& ofst)
 {
 	ofst << "Круг: r = " << r << endl;
+}
+void Circle::MultiMethod(Shape* other, ofstream& ofst)
+{
+	other->MMCircle(ofst);
+}
+void Circle::MMRectangle(ofstream& ofst)
+{
+	ofst << "Прямоугольник и круг" << endl;
+}
+void Circle::MMCircle(ofstream& ofst)
+{
+	ofst << "Круг и круг" << endl;
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
@@ -88,5 +112,20 @@ void Container::ClearContainer()
 		Node* forDelete = head;
 		head = head->next;
 		delete forDelete;
+	}
+}
+void Container::MultiMethod(ofstream& ofst)
+{
+	ofst << "Multimethod." << endl;
+	Node* i = head;
+	while (i->next)
+	{
+		Node* j = i->next;
+		while (j)
+		{
+			i->data->MultiMethod(j->data, ofst);
+			j = j->next;
+		}
+		i = i->next;
 	}
 }

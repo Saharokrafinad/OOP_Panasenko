@@ -12,6 +12,9 @@ public:
 	static Shape* In(ifstream& ifst);
 	virtual void InData(ifstream& ifst) = 0;
 	virtual void OutData(ofstream& ofst) = 0;
+	virtual void MultiMethod(Shape* other, ofstream& ofst) = 0;
+	virtual void MMRectangle(ofstream& ofst) = 0;
+	virtual void MMCircle(ofstream& ofst) = 0;
 };
 //----------------------------------------------------------------------------------------------
 // Прямоугольник
@@ -23,6 +26,9 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	void MultiMethod(Shape* other, ofstream& ofst);
+	void MMRectangle(ofstream& ofst);
+	void MMCircle(ofstream& ofst);
 	Rectangle() {};
 };
 //----------------------------------------------------------------------------------------------
@@ -35,6 +41,9 @@ private:
 public:
 	void InData(ifstream& ifst);
 	void OutData(ofstream& ofst);
+	void MultiMethod(Shape* other, ofstream& ofst);
+	void MMRectangle(ofstream& ofst);
+	void MMCircle(ofstream& ofst);
 	Circle() {};
 };
 //----------------------------------------------------------------------------------------------
@@ -60,6 +69,7 @@ public:
 	void InContainer(ifstream& ifst);
 	void OutContainer(ofstream& ofst);
 	void ClearContainer();
+	void MultiMethod(ofstream& ofst);
 	~Container() { ClearContainer(); }
 };
 #endif
